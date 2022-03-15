@@ -17,7 +17,7 @@ namespace TodoAPI.Controllers
         {
             _todoContext = todoContext;
         }
-        //GET/api/Todo
+        //GET/Todo
         [HttpGet]
         public IActionResult GetAllImenik()
         {
@@ -25,7 +25,7 @@ namespace TodoAPI.Controllers
             return Ok(imenikDto);
         }
         
-        //GET/api/Todo/1
+        //GET/Todo/1
         [HttpGet("{id}")]
         public Todo GetTodo(int id)
         {
@@ -37,7 +37,7 @@ namespace TodoAPI.Controllers
             return todo;
         }
 
-        //PUT/api/Todo/5
+        //PUT/Todo/5
         [HttpPut("{id}")]
         public void UpdateTodo(int id, [FromBody] Todo todo)
         {
@@ -52,7 +52,7 @@ namespace TodoAPI.Controllers
             _todoContext.SaveChanges();
         }
   
-        //POST/api/Todo
+        //CREATE/Todo
         [HttpPost]
         public Todo CreateTodo([FromBody] Todo todo)
         {
@@ -62,7 +62,7 @@ namespace TodoAPI.Controllers
             return todo;
         }
 
-        //DELETE/api/Todo/5
+        //DELETE/Todo/5
         [HttpDelete("{id}")]
         public void DeleteTodo(int id)
         {

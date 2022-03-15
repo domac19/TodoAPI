@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using TodoAPI.Model;
+using NodaTime;
 
 namespace TodoAPI
 {
@@ -23,13 +24,15 @@ namespace TodoAPI
                      {
                          Id = 1,
                          Name = "Jabuke",
-                         Completed = true
+                         Completed = true,
+                         DateCreated = DateTime.Now
                      },
                          new Todo
                          {
                              Id = 2,
                              Name = "Banane",
-                             Completed = true
+                             Completed = true,
+                             DateCreated = DateTime.Now
                          });
                 dbContext.SaveChanges();
             }

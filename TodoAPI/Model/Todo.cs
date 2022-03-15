@@ -1,9 +1,13 @@
-﻿namespace TodoAPI.Model
+﻿using System;
+
+namespace TodoAPI.Model
 {
     public class Todo
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public bool Completed { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateModified { get; set; }
     }
 }
