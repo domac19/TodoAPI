@@ -19,10 +19,10 @@ namespace TodoAPI.Controllers
         }
         //GET/Todo
         [HttpGet]
-        public IActionResult GetAllImenik()
+        public IActionResult GetAllTodo()
         {
-            var imenikDto = _todoContext.Todos.ToList();
-            return Ok(imenikDto);
+            var todos = _todoContext.Todos.ToList();
+            return Ok(todos);
         }
         
         //GET/Todo/1

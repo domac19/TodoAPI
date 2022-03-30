@@ -8,6 +8,5 @@ namespace TodoAPI.Model
         public string Name { get; set; }
         public bool Completed { get; set; }
         public DateTime DateCreated { get; set; }
-        public DateTime DateModified { get; set; }
     }
 }

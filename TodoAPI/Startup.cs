@@ -28,6 +28,9 @@ namespace TodoAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => options.AddDefaultPolicy(
+                builder => builder.AllowAnyOrigin()));
+
             services.AddDbContext<TodoContext>(options => options.UseInMemoryDatabase(databaseName: "Todo"));
 
             services.AddControllers();
@@ -46,6 +49,7 @@ namespace TodoAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoAPI v1"));
             }
+            app.UseCors();
 
             app.UseHttpsRedirection();
 
