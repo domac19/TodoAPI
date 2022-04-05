@@ -1,16 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System.Linq;
-using System.Threading.Tasks;
 using TodoAPI.Model;
-
 
 namespace TodoAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Todo")]
     [ApiController]
-    public class TodosController : ControllerBase
+    public class TodosController : Controller
     {
         private TodoContext _todoContext { get; set; }
         public TodosController(TodoContext todoContext)
@@ -24,7 +22,8 @@ namespace TodoAPI.Controllers
             var todos = _todoContext.Todos.ToList();
             return Ok(todos);
         }
-        
+
+        [Authorize]
         //GET/Todo/1
         [HttpGet("{id}")]
         public Todo GetTodo(int id)
@@ -37,6 +36,7 @@ namespace TodoAPI.Controllers
             return todo;
         }
 
+        [Authorize]
         //PUT/Todo/5
         [HttpPut("{id}")]
         public void UpdateTodo(int id, [FromBody] Todo todo)
@@ -51,7 +51,8 @@ namespace TodoAPI.Controllers
 
             _todoContext.SaveChanges();
         }
-  
+        
+        [Authorize]
         //CREATE/Todo
         [HttpPost]
         public Todo CreateTodo([FromBody] Todo todo)
@@ -62,6 +63,7 @@ namespace TodoAPI.Controllers
             return todo;
         }
 
+        [Authorize]
         //DELETE/Todo/5
         [HttpDelete("{id}")]
         public void DeleteTodo(int id)
